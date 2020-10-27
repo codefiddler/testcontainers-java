@@ -3,29 +3,11 @@
 As of November 2020 Docker Hub pulls are rate limited. 
 As Testcontainers uses Docker Hub for standard images, some users may hit these rate limits and should mitigate accordingly.
 
-This page sets out recommended options for Testcontainers users.
-Some combination of these approaches should be considered, taking into consideration the differences between local development and CI environments.
+Suggested mitigations are noted in [this issue](https://github.com/testcontainers/testcontainers-java/issues/3099) at present.
 
-## Considerations for local dev vs CI
+## Which images are used by Testcontainers?
 
-### Local development
-
-## Options
-
-### Do nothing
-
-### Use an authenticated Docker Hub account
-
-### Deploy a Registry server to act as a read-through cache
-
-[official Docker documentation about "Registry as a pull through cache"](https://docs.docker.com/registry/recipes/mirror/)
-
-### Copy required images to a private registry and update references to images in test code
-
-### Copy required images to a private registry and apply image name substitution
-
-
-## Which images need to be copied into my private registry?
+As of the current version of Testcontainers ({{latest_version}}):
 
 * every image directly used by your tests
 * images pulled by Testcontainers itself to support functionality:

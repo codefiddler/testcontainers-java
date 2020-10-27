@@ -15,7 +15,7 @@ This page describes four approaches for image name substitution:
     * [Developing a custom function for transforming image names on the fly](#developing-a-custom-function-for-transforming-image-names-on-the-fly)
     * [Overriding image names individually in configuration](#overriding-image-names-individually-in-configuration)
 
-It is assumed that you have already set up a private registry hosting [all the Docker images your build requires](./pull_rate_limiting.md#which-images-need-to-be-copied-into-my-private-registry).
+It is assumed that you have already set up a private registry hosting [all the Docker images your build requires](./pull_rate_limiting.md#which-images-are-used-by-testcontainers).
 
 
 
@@ -26,7 +26,7 @@ Consider this if:
 
 * You use only a few images and updating code is not a chore
 * All developers and CI machines in your organisation have access to a common registry server
-* You also use one of the automated mechanisms to substitute [the images that Testcontainers itself requires](./pull_rate_limiting.md#which-images-need-to-be-copied-into-my-private-registry)
+* You also use one of the automated mechanisms to substitute [the images that Testcontainers itself requires](./pull_rate_limiting.md#which-images-are-used-by-testcontainers)
 
 This approach simply entails modifying test code manually, e.g. changing:
 
@@ -69,7 +69,7 @@ This can be done in one of two ways:
     * the `~/.testcontainers.properties` file in your user home directory, or
     * a file named `testcontainers.properties` on the classpath
 
-Testcontainers will automatically apply this prefix to every image that it pulls - please verify that all [the required images](./pull_rate_limiting.md#which-images-need-to-be-copied-into-my-private-registry) exist in your registry.
+Testcontainers will automatically apply this prefix to every image that it pulls - please verify that all [the required images](./pull_rate_limiting.md#which-images-are-used-by-testcontainers) exist in your registry.
 
 Note that the prefix-based substitution will skip applying a prefix if it is already set.
 This is intended to help avoid obvious mistakes if image names have been partially migrated to a private image registry via changes to code.
